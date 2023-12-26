@@ -8,6 +8,29 @@ Sun > Mercury > Venus > Earth > Mars > Jupiter > Saturn > Uranus > Neptune > Plu
 
 import streamlit as st
 
+# set the page / tab title
+st.set_page_config(page_title="NebulaGPT")
+
+# set background image
+import base64
+
+def get_base64(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_background(png_file):
+    bin_str = get_base64(png_file)
+    page_bg_img = '''
+    <style>
+    .stApp {
+    background-image: url("data:image/png;base64,%s");
+    background-size: cover;
+    }
+    </style>
+    ''' % bin_str
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
 # read in custom CSS file
 def local_css(file_name):
     with open(file_name) as f:
@@ -22,16 +45,32 @@ def navigationButtons():
     with col1:
         pass
     with col2:
-        st.button('Previous', type="secondary", on_click=prevPage)
+        st.button('Previous', type="secondary", use_container_width=True, on_click=prevPage)
     with col3:
         pass
     with col4:
-        st.button('Next', type="primary", on_click=nextPage)
+        st.button('Next', type="primary", use_container_width=True, on_click=nextPage)
     with col5:
         pass
 
-def centerTitle(title):
-    st.markdown(f"<h1 style='text-align: center;'>{title}</h1>", unsafe_allow_html=True)
+def spacer(height: int = 50):
+    st.markdown(
+        f"""
+        <style>
+            .custom-spacer {{
+                height: {height}px;  /* Adjust the height as needed */
+            }}
+        </style>
+        <div class="custom-spacer"></div>
+        """,
+        unsafe_allow_html=True
+    )
+
+def center_head(text: str):
+    st.markdown(f"<h1 style='text-align: center; font-family: Helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
+
+def text(text: str):
+    st.markdown(f"<p style='font-family: Helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
 
 # pages functionality 
 if 'page' not in st.session_state: st.session_state.page = -1
@@ -45,10 +84,45 @@ page = st.empty()
 # welcome page
 if st.session_state.page == -1:
     with page.container():
-        centerTitle("Welcome to NebulaGPT")
+        set_background("images/homepage_background.jpeg")
+        center_head("Welcome to NebulaGPT")
+        st.markdown(f"<h4 style='font-family: Helvetica; color: white; font-weight: bold; text-stroke: 1px black;'>Your AI assistant to explore the Solar System and Space!</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='font-family: Helvetica; color: white; font-weight: bold;'>Begin your journey at Earth!</h4>", unsafe_allow_html=True)
+        spacer()
 
-        # navigation buttons
+        # button to navigate to Earth
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.button('Go to Earth', type="secondary", use_container_width=True, on_click=earthPage)
+        with col2:
+            pass
+        with col3:
+            pass
+
+# sun page
+if st.session_state.page == 0:
+    pass
+
+# mercury page
+if st.session_state.page == 1:
+    pass
+
+# venus page
+if st.session_state.page == 2:
+    pass
+
+# earth page
+if st.session_state.page == 3:
+    with page.container():
+        set_background("images/solar_system_background.jpeg")
+        center_head("Earth")
+        spacer()
         navigationButtons()
+
+
+
+
+
 
 #         st.header("This is page 1")
 #         st.button("Go to page 2",on_click=nextPage)

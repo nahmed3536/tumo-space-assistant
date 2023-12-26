@@ -1,9 +1,27 @@
 button[kind="primary"] {
-  background-color: orange;
-  width: 100px;
+  background-color: #002A3A;
+  border: 2px solid white;
+  color: white;
+  font-family: Helvetica;
+}
+
+button[kind="primary"]:hover {
+  background-color: #27768D;
+  border: 2px solid white;
+  color: black;
+  font-family: Helvetica;
 }
 
 button[kind="secondary"] {
-    background-color: purple;
-    width: 100px;
+  background-color: #EF5270;
+  border: 2px solid white;
+  color: white;
+  font-family: Helvetica;
+}
+
+button[kind="secondary"]:hover {
+  background-color: #D48D99;
+  border: 2px solid white;
+  color: black;
+  font-family: Helvetica;
 }
