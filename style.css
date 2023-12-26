@@ -1,0 +1,7 @@
+button[kind="primary"] {
+  background-color: orange;
+}
+
+button[kind="secondary"] {
+    background-color: purple;
+}

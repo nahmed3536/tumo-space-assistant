@@ -1,3 +1,10 @@
+"""
+Design Decision:
+
+Welcome splash page, where they are welcome and can start on earth (need explicit click)
+
+Sun > Mercury > Venus > Earth > Mars > Jupiter > Saturn > Uranus > Neptune > Pluto > Milky Way Galaxy > Andromeda Galaxy >  Virgo Supercluster
+"""
 # import streamlit as st
 
 # import base64
@@ -50,6 +57,15 @@
 
 
 import streamlit as st
+
+# st.set_page_config(layout="wide")
+
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+local_css("style.css")
+
 import base64
 import time
 
@@ -111,39 +127,81 @@ planets_data = {
 }
 
 
-# Pages logic 
-if 'page' not in st.session_state: st.session_state.page = 0
-def nextPage(): st.session_state.page += 1
-def firstPage(): st.session_state.page = 0
+# # Create a container for the header
+# header_container = st.container()
 
-ph = st.empty()
+# # Set the layout for the header
+# header_container.markdown(
+#     f'<div style="display: flex; justify-content: space-between; align-items: center;">'
+#     f'<div>Left Button</div>'
+#     f'<div style="text-align: center;"><h1>Explore Planets</h1></div>'
+#     f'<div style="text-align: right;">Right Button</div>'
+#     f'</div>',
+#     unsafe_allow_html=True
+# )
 
-## Page 0
-if st.session_state.page == 0:
-    with ph.container():
-        st.header("This is page 1")
-        st.button("Go to page 2",on_click=nextPage)
-        st.write(st.session_state.page)
-        time.sleep(2)
-        nextPage()
-        st.write(st.session_state.page)
 
-## Page 1
-elif st.session_state.page == 1:
-    with ph.container():
-        st.header("This is page 2")
-        st.write("Other stuff in page 2")
-        st.write("More stuff in page 2")
-        st.write("More more stuff in page 2")
-        st.write("More more more stuff in page 2")
-        st.button("Go to page 3",on_click=nextPage)
+# col1, col2, col3 = st.columns(3)
 
-## Page 2
-elif st.session_state.page == 2:
-    with ph.container():
-        st.header("This is page 3")
-        st.image("https://placekitten.com/g/1400/600",caption=f"Meowhy")
-        st.button("Go back",on_click=firstPage)
+# with col1:
+#     # Button on the left
+#     left_button = st.button("Left Button")
+
+# with col2:
+#     # Title in the center
+#     st.title("Explore Planets")
+
+# with col3:
+#     # Button on the right
+#     right_button = st.button("Right Button")
+
+
+col1, col2, col3 , col4, col5 = st.columns(5)
+
+with col1:
+    pass
+with col2:
+    st.button('Previous')
+with col3:
+    pass
+with col4:
+    st.button('  Next  ',  type="primary")
+with col5:
+    pass
+
+# # Pages logic 
+# if 'page' not in st.session_state: st.session_state.page = 0
+# def nextPage(): st.session_state.page += 1
+# def firstPage(): st.session_state.page = 0
+
+# ph = st.empty()
+
+# ## Page 0
+# if st.session_state.page == 0:
+#     with ph.container():
+#         st.header("This is page 1")
+#         st.button("Go to page 2",on_click=nextPage)
+#         st.write(st.session_state.page)
+#         time.sleep(2)
+#         nextPage()
+#         st.write(st.session_state.page)
+
+# ## Page 1
+# elif st.session_state.page == 1:
+#     with ph.container():
+#         st.header("This is page 2")
+#         st.write("Other stuff in page 2")
+#         st.write("More stuff in page 2")
+#         st.write("More more stuff in page 2")
+#         st.write("More more more stuff in page 2")
+#         st.button("Go to page 3",on_click=nextPage)
+
+# ## Page 2
+# elif st.session_state.page == 2:
+#     with ph.container():
+#         st.header("This is page 3")
+#         st.image("https://placekitten.com/g/1400/600",caption=f"Meowhy")
+#         st.button("Go back",on_click=firstPage)
 
 
 # # Display clickable images along the main section
