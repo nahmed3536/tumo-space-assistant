@@ -51,6 +51,7 @@
 
 import streamlit as st
 import base64
+import time
 
 # Set the background image using HTML and CSS
 def get_base64(bin_file):
@@ -71,8 +72,169 @@ def set_background(png_file):
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Display the background image using st.markdown
-set_background("images/solar_system_background.jpeg")
+# set_background("images/solar_system_background.jpeg")
 
-# Add other Streamlit components below
-st.title("My Streamlit App")
-st.write("This is my Streamlit app with a custom background image.")
+# # Add other Streamlit components below
+# st.title("My Streamlit App")
+# st.write("This is my Streamlit app with a custom background image.")
+
+# # Function to show the welcome message
+# def show_welcome_message():
+#     with content_placeholder.container(): 
+#         st.title("Welcome to the Planets App!")
+#         st.write("Loading...")
+
+# # Placeholder for dynamic content
+# content_placeholder = st.empty()
+
+# # Show the welcome message initially
+# show_welcome_message()
+
+# # Simulate a delay for loading the main app
+# time.sleep(2)
+
+# # Replace the content with the main app
+# content_placeholder = st.empty()
+
+
+
+# Placeholder data for planets
+planets_data = {
+    'Mercury': {'image_url': 'images/mercury.png', 'info': 'Information about Mercury'},
+    'Venus': {'image_url': 'images/venus.png', 'info': 'Information about Venus'},
+    'Earth': {'image_url': 'images/earth.png', 'info': 'Information about Earth'},
+    'Mars': {'image_url': 'images/mars.png', 'info': 'Information about Mars'},
+    'Jupiter': {'image_url': 'images/jupiter.png', 'info': 'Information about Jupiter'},
+    'Saturn': {'image_url': 'images/saturn.png', 'info': 'Information about Saturn'},
+    'Uranus': {'image_url': 'images/uranus.png', 'info': 'Information about Uranus'},
+    'Neptune': {'image_url': 'images/neptune.png', 'info': 'Information about Neptune'}
+}
+
+
+# Pages logic 
+if 'page' not in st.session_state: st.session_state.page = 0
+def nextPage(): st.session_state.page += 1
+def firstPage(): st.session_state.page = 0
+
+ph = st.empty()
+
+## Page 0
+if st.session_state.page == 0:
+    with ph.container():
+        st.header("This is page 1")
+        st.button("Go to page 2",on_click=nextPage)
+        st.write(st.session_state.page)
+        time.sleep(2)
+        nextPage()
+        st.write(st.session_state.page)
+
+## Page 1
+elif st.session_state.page == 1:
+    with ph.container():
+        st.header("This is page 2")
+        st.write("Other stuff in page 2")
+        st.write("More stuff in page 2")
+        st.write("More more stuff in page 2")
+        st.write("More more more stuff in page 2")
+        st.button("Go to page 3",on_click=nextPage)
+
+## Page 2
+elif st.session_state.page == 2:
+    with ph.container():
+        st.header("This is page 3")
+        st.image("https://placekitten.com/g/1400/600",caption=f"Meowhy")
+        st.button("Go back",on_click=firstPage)
+
+
+# # Display clickable images along the main section
+# st.title("Explore Planets")
+
+# st.button(st.image("images/mars.png"))
+
+# for planet, data in planets_data.items():
+#     st.subheader(planet)
+
+#     # Add a button to show/hide the chat window when the image is clicked
+#     if st.button(f"Show Chat about {planet}", key=f"button_{planet}"):
+#         st.header(f"Chat about {planet}")
+#         question = st.text_input("Type your question here:")
+#         if st.button("Ask"):
+#             st.success(f"You asked about {planet}: {question}")
+
+#     # Display the image within the button
+#     if st.button("", key=f"button_image_{planet}"):
+#         st.image(data['image_url'], use_column_width=True, caption=f"Click to chat about {planet}")
+
+#     # Display the information about the planet
+#     st.write(data['info'])
+
+#     # Add a separator between planets
+#     st.markdown("---")
+
+
+# # Loop through each planet and display information vertically
+# for planet, data in planets_data.items():
+#     st.subheader(planet)
+#     st.image(data['image_url'], use_column_width=True)
+    
+#     # Add a button to open a chat window for each planet
+#     if st.button(st.image(data['image_url'], use_column_width=False)):
+#         st.header(f"Chat about {planet}")
+#         question = st.text_input("Type your question here:")
+#         if st.button("Ask"):
+#             st.success(f"You asked about {planet}: {question}")
+
+#     # Display the information about the planet
+#     st.write(data['info'])
+
+#     # Add a separator between planets
+#     st.markdown("---")
+
+
+# # Create a horizontally scrollable row of images with a button for each planet
+# col1, col2, col3 = st.columns(3)
+# selected_planet_index = 0
+
+# with col1:
+#    st.header("A cat")
+#    st.image("https://static.streamlit.io/examples/cat.jpg")
+
+# with col2:
+#    st.header("A dog")
+#    st.image("https://static.streamlit.io/examples/dog.jpg")
+
+# with col3:
+#    st.header("An owl")
+#    st.image("https://static.streamlit.io/examples/owl.jpg")
+
+# # Function to show the planet information
+# def show_planet_info(planet):
+#     st.image(planets_data[planet]['image_url'], use_column_width=True)
+#     st.info(planets_data[planet]['info'])
+
+# # Display the current planet
+# current_planet = list(planets_data.keys())[selected_planet_index]
+# show_planet_info(current_planet)
+
+# # Add buttons for navigation
+# with st.container():
+#     prev_button = st.button("Previous", key="prev_button")
+#     st.text(f"Current Planet: {current_planet}")
+#     next_button = st.button("Next", key="next_button")
+
+# # Handle button clicks
+# if prev_button and selected_planet_index > 0:
+#     selected_planet_index -= 1
+# elif next_button and selected_planet_index < len(planets_data) - 1:
+#     selected_planet_index += 1
+
+# # Update and display the selected planet
+# current_planet = list(planets_data.keys())[selected_planet_index]
+# show_planet_info(current_planet)
+
+
+# # Add a chat box for questions
+# st.header("Ask Questions")
+# question = st.text_input("Type your question here:")
+# if st.button("Ask"):
+#     st.success(f"You asked: {question}")
