@@ -1,5 +1,14 @@
 import streamlit as st
 
+background_image = """
+<style>
+body {
+    background-image: url('images/solar_system_background.jpeg')
+    background-size: cover;
+}
+</style>
+"""
+
 # Function to display planet information
 def display_planet_info(planet):
     st.write(f"## {planet.capitalize()} Information")
