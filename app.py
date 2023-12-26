@@ -5,6 +5,61 @@ Welcome splash page, where they are welcome and can start on earth (need explici
 
 Sun > Mercury > Venus > Earth > Mars > Jupiter > Saturn > Uranus > Neptune > Pluto > Milky Way Galaxy > Andromeda Galaxy >  Virgo Supercluster
 """
+
+import streamlit as st
+
+# read in custom CSS file
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+local_css("style.css")
+
+# web-app elements
+def navigationButtons():
+    # navigation buttons
+    col1, col2, col3, col4, col5 = st.columns(5)
+    with col1:
+        pass
+    with col2:
+        st.button('Previous', type="secondary", on_click=prevPage)
+    with col3:
+        pass
+    with col4:
+        st.button('Next', type="primary", on_click=nextPage)
+    with col5:
+        pass
+
+def centerTitle(title):
+    st.markdown(f"<h1 style='text-align: center;'>{title}</h1>", unsafe_allow_html=True)
+
+# pages functionality 
+if 'page' not in st.session_state: st.session_state.page = -1
+def prevPage(): st.session_state.page -= 1 # move back a page
+def nextPage(): st.session_state.page += 1 # move forward a page
+def earthPage(): st.session_state.page = 3 # go to Earth page
+
+# create a page container
+page = st.empty()
+
+# welcome page
+if st.session_state.page == -1:
+    with page.container():
+        centerTitle("Welcome to NebulaGPT")
+
+        # navigation buttons
+        navigationButtons()
+
+#         st.header("This is page 1")
+#         st.button("Go to page 2",on_click=nextPage)
+#         st.write(st.session_state.page)
+#         time.sleep(2)
+#         nextPage()
+#         st.write(st.session_state.page)
+
+
+
+
 # import streamlit as st
 
 # import base64
@@ -56,36 +111,36 @@ Sun > Mercury > Venus > Earth > Mars > Jupiter > Saturn > Uranus > Neptune > Plu
 #     main()
 
 
-import streamlit as st
+# import streamlit as st
 
-# st.set_page_config(layout="wide")
+# # st.set_page_config(layout="wide")
 
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# def local_css(file_name):
+#     with open(file_name) as f:
+#         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-local_css("style.css")
+# local_css("style.css")
 
-import base64
-import time
+# import base64
+# import time
 
-# Set the background image using HTML and CSS
-def get_base64(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+# # Set the background image using HTML and CSS
+# def get_base64(bin_file):
+#     with open(bin_file, 'rb') as f:
+#         data = f.read()
+#     return base64.b64encode(data).decode()
 
-def set_background(png_file):
-    bin_str = get_base64(png_file)
-    page_bg_img = '''
-    <style>
-    .stApp {
-    background-image: url("data:image/png;base64,%s");
-    background-size: cover;
-    }
-    </style>
-    ''' % bin_str
-    st.markdown(page_bg_img, unsafe_allow_html=True)
+# def set_background(png_file):
+#     bin_str = get_base64(png_file)
+#     page_bg_img = '''
+#     <style>
+#     .stApp {
+#     background-image: url("data:image/png;base64,%s");
+#     background-size: cover;
+#     }
+#     </style>
+#     ''' % bin_str
+#     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Display the background image using st.markdown
 # set_background("images/solar_system_background.jpeg")
@@ -114,17 +169,17 @@ def set_background(png_file):
 
 
 
-# Placeholder data for planets
-planets_data = {
-    'Mercury': {'image_url': 'images/mercury.png', 'info': 'Information about Mercury'},
-    'Venus': {'image_url': 'images/venus.png', 'info': 'Information about Venus'},
-    'Earth': {'image_url': 'images/earth.png', 'info': 'Information about Earth'},
-    'Mars': {'image_url': 'images/mars.png', 'info': 'Information about Mars'},
-    'Jupiter': {'image_url': 'images/jupiter.png', 'info': 'Information about Jupiter'},
-    'Saturn': {'image_url': 'images/saturn.png', 'info': 'Information about Saturn'},
-    'Uranus': {'image_url': 'images/uranus.png', 'info': 'Information about Uranus'},
-    'Neptune': {'image_url': 'images/neptune.png', 'info': 'Information about Neptune'}
-}
+# # Placeholder data for planets
+# planets_data = {
+#     'Mercury': {'image_url': 'images/mercury.png', 'info': 'Information about Mercury'},
+#     'Venus': {'image_url': 'images/venus.png', 'info': 'Information about Venus'},
+#     'Earth': {'image_url': 'images/earth.png', 'info': 'Information about Earth'},
+#     'Mars': {'image_url': 'images/mars.png', 'info': 'Information about Mars'},
+#     'Jupiter': {'image_url': 'images/jupiter.png', 'info': 'Information about Jupiter'},
+#     'Saturn': {'image_url': 'images/saturn.png', 'info': 'Information about Saturn'},
+#     'Uranus': {'image_url': 'images/uranus.png', 'info': 'Information about Uranus'},
+#     'Neptune': {'image_url': 'images/neptune.png', 'info': 'Information about Neptune'}
+# }
 
 
 # # Create a container for the header
@@ -156,18 +211,18 @@ planets_data = {
 #     right_button = st.button("Right Button")
 
 
-col1, col2, col3 , col4, col5 = st.columns(5)
+# col1, col2, col3 , col4, col5 = st.columns(5)
 
-with col1:
-    pass
-with col2:
-    st.button('Previous')
-with col3:
-    pass
-with col4:
-    st.button('  Next  ',  type="primary")
-with col5:
-    pass
+# with col1:
+#     pass
+# with col2:
+#     st.button('Previous')
+# with col3:
+#     pass
+# with col4:
+#     st.button('Next',  type="primary")
+# with col5:
+#     pass
 
 # # Pages logic 
 # if 'page' not in st.session_state: st.session_state.page = 0
