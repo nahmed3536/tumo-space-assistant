@@ -1,7 +1,9 @@
 button[kind="primary"] {
   background-color: orange;
+  width: 100px;
 }
 
 button[kind="secondary"] {
     background-color: purple;
+    width: 100px;
 }
