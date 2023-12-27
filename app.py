@@ -147,6 +147,8 @@ if st.session_state.page == -1:
 # page template populate from content.py
 import content
 
+if 'last_page_assistant_called_on' not in st.session_state: st.session_state.last_page_assistant_called_on = -1
+
 def page_template(page_num):
     """
     Template that is populated based on `page_num`
@@ -168,7 +170,7 @@ def page_template(page_num):
     st.markdown(text_box_content, unsafe_allow_html=True)
 
     # chat interface
-    user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")
+    user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")       
 
     if user_input and st.session_state.prev_input != user_input:
         # get response based on user input
@@ -177,10 +179,13 @@ def page_template(page_num):
         # display the response
         text_box_content = f"""
         <div style="background-color: {config['theme']['secondaryBackgroundColor']}; padding: 10px; border-radius: 10px;">
-            <h6 style="color: {config['theme']['textColor']};">This is a sample text box with a background color.</h6>
+            <h6 style="color: {config['theme']['textColor']};">{response}</h6>
         </div>
         """
         st.markdown(text_box_content, unsafe_allow_html=True)
+
+        # update the page number that the assistant was last called on - this allows the chat to be asked when the page swaps
+        st.session_state.last_page_assistant_called_on = page_num
 
     # update the session input variable
     st.session_state.prev_input = user_input
