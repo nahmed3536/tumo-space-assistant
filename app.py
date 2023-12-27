@@ -147,15 +147,11 @@ if st.session_state.page == 3:
         center_head("Earth")
         with st.columns([1, 2, 1])[1]:
             st.image("images/earth.png", use_column_width = True)
-        
-        # Define the background color and text color
-        background_color = "#141317"
-        text_color = "#ffffff"
 
         # Define the content for the text box
         text_box_content = f"""
-            <div style="background-color: {background_color}; padding: 10px; border-radius: 10px;">
-                <h6 style="color: {text_color};">Information about Earth</h6>
+            <div style="background-color: {config['theme']['backgroundColor']}; padding: 10px; border-radius: 10px;">
+                <h6 style="font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']};">Information about Earth</h6>
             </div>
         """
 
@@ -163,23 +159,20 @@ if st.session_state.page == 3:
         st.markdown(text_box_content, unsafe_allow_html=True)
 
         def get_response(prompt):
-            # Replace this with your logic to generate a response based on the input prompt
-            # For now, let's just echo the prompt as a response
             return assistant(prompt)
         
 
         user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")
 
-        # Check if the user pressed Enter (carriage return)
+        # check if the user pressed Enter (carriage return)
         if user_input and st.session_state.prev_input != user_input:
-            # Get response based on user input
+            # get response based on user input
             response = get_response(user_input)
 
             # Display the response
             text_box_content = f"""
-            <div style="background-color: #FFFFFF; padding: 10px; border-radius: 10px;">
-                <h2 style="color: #000000;">{response}</h2>
-                <p style="color: #000000;">This is a sample text box with a background color.</p>
+            <div style="background-color: {config['theme']['secondaryBackgroundColor']}; padding: 10px; border-radius: 10px;">
+                <h6 style="color: {config['theme']['textColor']};">This is a sample text box with a background color.</h6>
             </div>
             """
             st.markdown(text_box_content, unsafe_allow_html=True)
