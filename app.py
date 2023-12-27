@@ -175,7 +175,7 @@ def page_template(page_num):
 
     if user_input and st.session_state.prev_input != user_input:
         # get response based on user input
-        response = custom_assistant(user_input)
+        response = custom_assistant(user_input, content.instructions, page_content['additional_llm_context'])
 
         # display the response
         text_box_content = f"""

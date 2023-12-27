@@ -47,7 +47,7 @@ content = {
         "image": "images/earth.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Earth",
-    }
+    },
     4: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Mars",
