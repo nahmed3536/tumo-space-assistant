@@ -165,7 +165,7 @@ def page_template(page_num):
     # define and display information for the page
     text_box_content = f"""
         <div style="background-color: {config['theme']['backgroundColor']}; padding: 10px; border-radius: 10px;">
-            <h6 style="font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']};">{page_content['information']}</h6>
+            <h6 style="font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']}; line-height: {config['markdown']['lightHeight']};">{page_content['information']}</h6>
         </div>
     """
     st.markdown(text_box_content, unsafe_allow_html=True)
@@ -180,7 +180,7 @@ def page_template(page_num):
         # display the response
         text_box_content = f"""
         <div style="background-color: {config['theme']['secondaryBackgroundColor']}; padding: 10px; border-radius: 10px;">
-            <h6 style="color: {config['theme']['textColor']};">{response}</h6>
+            <h6 style="color: {config['theme']['textColor']}; line-height: {config['markdown']['lightHeight']};">{response}</h6>
         </div>
         """
         st.markdown(text_box_content, unsafe_allow_html=True)

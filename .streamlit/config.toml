@@ -22,3 +22,4 @@ secondaryHoverColor="#000000"
 [markdown] # custom markdown theme
 textColor="#FFFFFF" 
 font="monospace"
+lightHeight=1.6

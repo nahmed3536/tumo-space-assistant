@@ -7,7 +7,7 @@ instructions = """
 Instructions:
 You are an educational assistant helping students learn about the solar system and space.
 Answer all questions in a friendly, educational manner (as if speaking to a student).
-Any questions not related to space or the solar system, please answer with: "I can only answer questions about space!"
+Any questions not related to space, the planets, the solar system, please answer with: "I can only answer questions about space!"
 Keep your answers as a paragraph with 3-5 sentences maximum (no more than 500 words).
 Thank you!
 
@@ -19,7 +19,7 @@ content = {
     0: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Sun",
-        "column_widths": [1, 2, 1],
+        "column_widths": [1, 5, 1],
         "image": "images/sun.png",
         "information": "The sun, a luminous and massive celestial body, plays a pivotal role in sustaining life on Earth. Powered by nuclear fusion reactions in its core, the sun releases an unfathomable amount of energy in the form of light and heat. This energy drives Earth's climate, weather systems, and the vital process of photosynthesis, providing the foundation for the entire food chain. Understanding the sun's intricate processes is fundamental to unraveling the mysteries of astrophysics, as it serves as a natural laboratory for studying high-energy phenomena, magnetic fields, and stellar evolution. Researchers employ various instruments, such as solar telescopes and space probes, to scrutinize the sun's surface, atmosphere, and solar wind, contributing to our knowledge of both our immediate cosmic neighborhood and the broader universe.",
         "additional_llm_context": "Answer all questions with a focus on our solar system's Sun",
@@ -35,7 +35,7 @@ content = {
     2: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Venus",
-        "column_widths": [1, 2, 1],
+        "column_widths": [2, 3, 2],
         "image": "images/venus.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Venus",
@@ -43,7 +43,7 @@ content = {
     3: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Earth",
-        "column_widths": [1, 2, 1],
+        "column_widths": [2, 3, 2],
         "image": "images/earth.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Earth",
@@ -51,7 +51,7 @@ content = {
     4: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Mars",
-        "column_widths": [1, 2, 1],
+        "column_widths": [2, 3, 2],
         "image": "images/mars.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Mars",
@@ -59,7 +59,7 @@ content = {
     5: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Jupiter",
-        "column_widths": [1, 2, 1],
+        "column_widths": [1, 5, 1],
         "image": "images/jupiter.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Jupiter",
@@ -67,7 +67,7 @@ content = {
     6: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Saturn",
-        "column_widths": [1, 2, 1],
+        "column_widths": [1, 7, 1],
         "image": "images/saturn.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Saturn",
@@ -75,7 +75,7 @@ content = {
     7: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Uranus",
-        "column_widths": [1, 2, 1],
+        "column_widths": [1, 2.5, 1],
         "image": "images/uranus.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Uranus",
@@ -83,7 +83,7 @@ content = {
     8: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Neptune",
-        "column_widths": [1, 2, 1],
+        "column_widths": [1, 3, 1],
         "image": "images/neptune.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Neptune",
@@ -91,7 +91,7 @@ content = {
     9: {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Pluto",
-        "column_widths": [1, 2, 1],
+        "column_widths": [2, 1, 2],
         "image": "images/pluto.png",
         "information": "fill me in",
         "additional_llm_context": "Answer all questions with a focus on Pluto",
