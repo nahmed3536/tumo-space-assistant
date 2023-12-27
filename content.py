@@ -21,7 +21,7 @@ content = {
         "header": "Sun",
         "column_widths": [1, 5, 1],
         "image": "images/sun.png",
-        "information": "The sun, a luminous and massive celestial body, plays a pivotal role in sustaining life on Earth. Powered by nuclear fusion reactions in its core, the sun releases an unfathomable amount of energy in the form of light and heat. This energy drives Earth's climate, weather systems, and the vital process of photosynthesis, providing the foundation for the entire food chain. Understanding the sun's intricate processes is fundamental to unraveling the mysteries of astrophysics, as it serves as a natural laboratory for studying high-energy phenomena, magnetic fields, and stellar evolution. Researchers employ various instruments, such as solar telescopes and space probes, to scrutinize the sun's surface, atmosphere, and solar wind, contributing to our knowledge of both our immediate cosmic neighborhood and the broader universe.",
+        "information": "The Sun is the star at the center of the Solar System. It is a massive, hot ball of plasma, inflated and heated by energy produced by nuclear fusion reactions at its core.",
         "additional_llm_context": "Answer all questions with a focus on our solar system's Sun",
     }, 
     1: {
@@ -29,7 +29,7 @@ content = {
         "header": "Mercury",
         "column_widths": [1, 2, 1],
         "image": "images/mercury.png",
-        "information": "Mercury, the smallest and innermost planet in our solar system, is a rocky world with a myriad of unique characteristics. Boasting extreme temperature variations due to its lack of a substantial atmosphere, Mercury experiences scorching daytime temperatures that can reach up to 800 degrees Fahrenheit (427 degrees Celsius) and frigid nighttime lows plunging to -290 degrees Fahrenheit (-179 degrees Celsius). Despite being the closest planet to the sun, its surface is not uniform, featuring expansive plains, steep cliffs, and impact craters. Mercury's slow rotation on its axis results in a 2:3 resonance with its orbit around the sun, meaning it completes three rotations for every two orbits. This peculiarity contributes to its peculiar day-night cycle, lasting approximately 176 Earth days, and showcases the fascinating dynamics at play in our solar system's innermost realms.",
+        "information": "Mercury, the smallest and innermost planet in our solar system, experiences extreme temperature variations due to its lack of a significant atmosphere, resulting in scorching daytime highs and frigid nighttime lows on its heavily cratered surface.",
         "additional_llm_context": "Answer all questions with a focus on Mercury",
     }, 
     2: {
@@ -37,7 +37,7 @@ content = {
         "header": "Venus",
         "column_widths": [2, 3, 2],
         "image": "images/venus.png",
-        "information": "fill me in",
+        "information": "Venus is the second planet from the sun and is similar in size to Earth, often referred to as Earth's "sister planet." It is characterized by a thick, toxic atmosphere composed mainly of carbon dioxide, causing a runaway greenhouse effect and making it the hottest planet in our solar system.",
         "additional_llm_context": "Answer all questions with a focus on Venus",
     },
     3: {
@@ -45,7 +45,7 @@ content = {
         "header": "Earth",
         "column_widths": [2, 3, 2],
         "image": "images/earth.png",
-        "information": "fill me in",
+        "information": "Earth is the third planet from the Sun and the only astronomical object known to harbor life. This is enabled by Earth being a water world, the only one in the Solar System sustaining liquid surface water.",
         "additional_llm_context": "Answer all questions with a focus on Earth",
     },
     4: {
@@ -53,7 +53,7 @@ content = {
         "header": "Mars",
         "column_widths": [2, 3, 2],
         "image": "images/mars.png",
-        "information": "fill me in",
+        "information": "Mars, the fourth planet from the sun, is often called the "Red Planet" due to its rusty appearance. It features a diverse landscape, including expansive deserts, polar ice caps, and evidence of ancient riverbeds, sparking interest in the possibility of past or present Martian life.",
         "additional_llm_context": "Answer all questions with a focus on Mars",
     },
     5: {
@@ -61,7 +61,7 @@ content = {
         "header": "Jupiter",
         "column_widths": [1, 5, 1],
         "image": "images/jupiter.png",
-        "information": "fill me in",
+        "information": "Jupiter is the largest planet in our solar system, with a diameter over 11 times that of Earth. Known for its prominent bands of clouds and the iconic Great Red Spot—a massive storm—Jupiter is a gas giant primarily composed of hydrogen and helium.",
         "additional_llm_context": "Answer all questions with a focus on Jupiter",
     },
     6: {
@@ -69,7 +69,7 @@ content = {
         "header": "Saturn",
         "column_widths": [1, 7, 1],
         "image": "images/saturn.png",
-        "information": "fill me in",
+        "information": "Saturn, the sixth planet from the sun, is recognized for its stunning ring system, consisting of intricate and extensive bands of ice and rock particles. This gas giant, second in size only to Jupiter, boasts a distinctive golden hue and a diverse array of moons, including the large moon Titan.",
         "additional_llm_context": "Answer all questions with a focus on Saturn",
     },
     7: {
@@ -77,7 +77,7 @@ content = {
         "header": "Uranus",
         "column_widths": [1, 2.5, 1],
         "image": "images/uranus.png",
-        "information": "fill me in",
+        "information": "Uranus is the seventh planet from the sun and is distinguished by its unique sideways rotation, causing it to roll on its side. This ice giant is composed mainly of hydrogen, helium, and methane, and it has a faint ring system.",
         "additional_llm_context": "Answer all questions with a focus on Uranus",
     },
     8: {
@@ -85,7 +85,7 @@ content = {
         "header": "Neptune",
         "column_widths": [1, 3, 1],
         "image": "images/neptune.png",
-        "information": "fill me in",
+        "information": "Neptune, the eighth and farthest planet from the sun, is a frigid, gaseous giant with a vivid blue hue due to the presence of methane in its atmosphere. It possesses strong winds and a notable dark storm called the Great Dark Spot, resembling Jupiter's Great Red Spot.",
         "additional_llm_context": "Answer all questions with a focus on Neptune",
     },
     9: {
@@ -93,7 +93,7 @@ content = {
         "header": "Pluto",
         "column_widths": [2, 1, 2],
         "image": "images/pluto.png",
-        "information": "fill me in",
+        "information": "Pluto, once considered the ninth planet, is now classified as a dwarf planet in our solar system. It has a highly elliptical orbit and is characterized by a frigid environment, with temperatures reaching as low as -375 degrees Fahrenheit (-225 degrees Celsius).",
         "additional_llm_context": "Answer all questions with a focus on Pluto",
     },
 }
