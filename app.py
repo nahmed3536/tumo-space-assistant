@@ -116,6 +116,27 @@ if st.session_state.page == 3:
     with page.container():
         set_background("images/solar_system_background.jpeg")
         center_head("Earth")
+
+        
+
+        # image URL
+        # image_url = "images/earth.png"
+
+
+        # image = Image.open("images/earth.png")
+
+        # # Convert the image to a base64-encoded string
+        # image_base64 = base64.b64encode(io.BytesIO(image.convert("RGBA").png).read()).decode()
+
+        # # Markdown to insert the base64-encoded image
+        # st.markdown(f"![Image](data:image/png;base64,{image_base64})", unsafe_allow_html=True)
+                
+        # # # Apply the custom code
+        # # st.markdown(custom_image_code, unsafe_allow_html=True)
+        # # st.image(image_url, caption="Centered Image", use_column_width=auto)
+
+        with st.columns([1, 2, 1])[1]:
+            st.image("images/earth.png", use_column_width = True)
         spacer()
         navigationButtons()
 
