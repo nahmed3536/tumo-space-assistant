@@ -44,9 +44,6 @@ def local_css(css):
 local_css(style.css)
 
 # web-app elements
-font_family = ""
-
-
 def navigationButtons():
     # navigation buttons
     col1, col2, col3, col4, col5 = st.columns(5)
@@ -75,10 +72,10 @@ def spacer(height: int = 50):
     )
 
 def center_head(text: str):
-    st.markdown(f"<h1 style='text-align: center; font-family: helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center; font-family: {config['theme']['font']}; color: {config['theme']['textColor']};'>{text}</h1>", unsafe_allow_html=True)
 
 def text(text: str):
-    st.markdown(f"<p style='font-family: helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-family: {config['theme']['font']}; color: {config['theme']['textColor']};'>{text}</h1>", unsafe_allow_html=True)
 
 # pages functionality 
 if 'page' not in st.session_state: st.session_state.page = -1
@@ -94,8 +91,8 @@ if st.session_state.page == -1:
     with page.container():
         set_background("images/homepage_background.jpeg")
         center_head("Welcome to NebulaGPT")
-        st.markdown(f"<h4 style='font-family: Helvetica; color: white; font-weight: bold; text-stroke: 1px black;'>Your AI assistant to explore the Solar System and Space!</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h4 style='font-family: Helvetica; color: white; font-weight: bold;'>Begin your journey at Earth!</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='font-family: {config['theme']['font']}; color: {config['theme']['textColor']}; font-weight: bold; text-stroke: 1px black;'>Your AI assistant to explore the Solar System and Space!</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='font-family: {config['theme']['font']}; color: {config['theme']['textColor']}; font-weight: bold;'>Begin your journey at Earth!</h4>", unsafe_allow_html=True)
         spacer()
 
         # button to navigate to Earth
