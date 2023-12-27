@@ -194,20 +194,56 @@ def page_template(page_num):
 
 # sun page
 if st.session_state.page == 0:
-    pass
+    with page.container():
+        page_template(0)
 
 # mercury page
 if st.session_state.page == 1:
-    pass
+    with page.container():
+        page_template(1)
 
 # venus page
 if st.session_state.page == 2:
-    pass
+    with page.container():
+        page_template(2)
 
 # earth page
 if st.session_state.page == 3:
     with page.container():
         page_template(3)
+
+# mars page
+if st.session_state.page == 4:
+    with page.container():
+        page_template(4)
+
+# jupiter page
+if st.session_state.page == 5:
+    with page.container():
+        page_template(5)
+
+# saturn page
+if st.session_state.page == 6:
+    with page.container():
+        page_template(6)
+
+# uranus page
+if st.session_state.page == 7:
+    with page.container():
+        page_template(7)
+
+# neptune page
+if st.session_state.page == 8:
+    with page.container():
+        page_template(8)
+
+# pluto page
+if st.session_state.page == 9:
+    with page.container():
+        page_template(9)
+
+
+
     #     set_background("images/solar_system_background.jpeg")
     #     center_head("Earth")
     #     with st.columns([1, 2, 1])[1]:
