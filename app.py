@@ -23,7 +23,7 @@ openai_client = openai.OpenAI(
     api_key=os.environ['OPENAI_API_KEY'],
 )
 
-def assistant(prompt: str, context: str = "You are a helpful assistant.", model: str = "gpt-3.5-turbo") -> str:
+def chatgpt(prompt: str, context: str = "You are a helpful assistant.", model: str = "gpt-3.5-turbo") -> str:
     response = openai_client.chat.completions.create(
         messages=[
             {
@@ -38,6 +38,13 @@ def assistant(prompt: str, context: str = "You are a helpful assistant.", model:
         model=model,
     )
     return response.choices[0].message.content
+
+# customized assistant
+def custom_assistant(prompt: str) -> str:
+    """
+    Custom logic for our assistant
+    """
+    return "Not programmed yet"
 
 # set background image
 import base64
@@ -68,17 +75,25 @@ def local_css(css):
 local_css(style.css)
 
 # web-app elements
-def navigationButtons():
-    # navigation buttons
+def navigationButtons(include_prev: bool = True, include_next: bool = True):
+    """
+    Navigation buttons between pages with `include_prev` and `include_next` toggles for first and last page
+    """
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         pass
     with col2:
-        st.button('Previous', type="secondary", use_container_width=True, on_click=prevPage)
+        if include_prev:
+            st.button('Previous', type="secondary", use_container_width=True, on_click=prevPage)
+        else:
+            pass
     with col3:
         pass
     with col4:
-        st.button('Next', type="primary", use_container_width=True, on_click=nextPage)
+        if include_next:
+            st.button('Next', type="primary", use_container_width=True, on_click=nextPage)
+        else: 
+            pass
     with col5:
         pass
 
@@ -128,6 +143,55 @@ if st.session_state.page == -1:
         with col3:
             pass
 
+
+# page template populate from content.py
+import content
+
+def page_template(page_num):
+    """
+    Template that is populated based on `page_num`
+    """ 
+    page_content = content.content[page_num]
+
+    # set background, header, and image
+    set_background(page_content["background_img"])
+    center_head(page_content["header"])
+    with st.columns(page_content["column_widths"])[1]:
+        st.image(page_content["image"], use_column_width = True)
+
+    # define and display information for the page
+    text_box_content = f"""
+        <div style="background-color: {config['theme']['backgroundColor']}; padding: 10px; border-radius: 10px;">
+            <h6 style="font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']};">{page_content['information']}</h6>
+        </div>
+    """
+    st.markdown(text_box_content, unsafe_allow_html=True)
+
+    # chat interface
+    user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")
+
+    if user_input and st.session_state.prev_input != user_input:
+        # get response based on user input
+        response = custom_assistant(user_input)
+
+        # display the response
+        text_box_content = f"""
+        <div style="background-color: {config['theme']['secondaryBackgroundColor']}; padding: 10px; border-radius: 10px;">
+            <h6 style="color: {config['theme']['textColor']};">This is a sample text box with a background color.</h6>
+        </div>
+        """
+        st.markdown(text_box_content, unsafe_allow_html=True)
+
+    # update the session input variable
+    st.session_state.prev_input = user_input
+
+    spacer()
+
+    # handle logic for first and last page
+    include_prev = page_num != content.first_page_num
+    include_next = page_num != content.last_page_num
+    navigationButtons(include_prev, include_next)
+
 # sun page
 if st.session_state.page == 0:
     pass
@@ -143,45 +207,46 @@ if st.session_state.page == 2:
 # earth page
 if st.session_state.page == 3:
     with page.container():
-        set_background("images/solar_system_background.jpeg")
-        center_head("Earth")
-        with st.columns([1, 2, 1])[1]:
-            st.image("images/earth.png", use_column_width = True)
+        page_template(3)
+    #     set_background("images/solar_system_background.jpeg")
+    #     center_head("Earth")
+    #     with st.columns([1, 2, 1])[1]:
+    #         st.image("images/earth.png", use_column_width = True)
 
-        # Define the content for the text box
-        text_box_content = f"""
-            <div style="background-color: {config['theme']['backgroundColor']}; padding: 10px; border-radius: 10px;">
-                <h6 style="font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']};">Information about Earth</h6>
-            </div>
-        """
+    #     # Define the content for the text box
+    #     text_box_content = f"""
+    #         <div style="background-color: {config['theme']['backgroundColor']}; padding: 10px; border-radius: 10px;">
+    #             <h6 style="font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']};">Information about Earth</h6>
+    #         </div>
+    #     """
 
-        # Display the text box using markdown
-        st.markdown(text_box_content, unsafe_allow_html=True)
+    #     # Display the text box using markdown
+    #     st.markdown(text_box_content, unsafe_allow_html=True)
 
-        def get_response(prompt):
-            return assistant(prompt)
+    #     def get_response(prompt):
+    #         return assistant(prompt)
         
 
-        user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")
+    #     user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")
 
-        # check if the user pressed Enter (carriage return)
-        if user_input and st.session_state.prev_input != user_input:
-            # get response based on user input
-            response = get_response(user_input)
+    #     # check if the user pressed Enter (carriage return)
+    #     if user_input and st.session_state.prev_input != user_input:
+    #         # get response based on user input
+    #         response = get_response(user_input)
 
-            # Display the response
-            text_box_content = f"""
-            <div style="background-color: {config['theme']['secondaryBackgroundColor']}; padding: 10px; border-radius: 10px;">
-                <h6 style="color: {config['theme']['textColor']};">This is a sample text box with a background color.</h6>
-            </div>
-            """
-            st.markdown(text_box_content, unsafe_allow_html=True)
+    #         # Display the response
+    #         text_box_content = f"""
+    #         <div style="background-color: {config['theme']['secondaryBackgroundColor']}; padding: 10px; border-radius: 10px;">
+    #             <h6 style="color: {config['theme']['textColor']};">This is a sample text box with a background color.</h6>
+    #         </div>
+    #         """
+    #         st.markdown(text_box_content, unsafe_allow_html=True)
 
-        # Update the previous input
-        st.session_state.prev_input = user_input
+    #     # Update the previous input
+    #     st.session_state.prev_input = user_input
 
-        spacer()
-        navigationButtons()
+    #     spacer()
+    #     navigationButtons()
 
 
 

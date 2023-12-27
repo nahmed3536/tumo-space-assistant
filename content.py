@@ -12,7 +12,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Sun",
         "column_widths": [1, 2, 1],
-        "image": "images/sun.png"
+        "image": "images/sun.png",
         "information": "fill me in",
         "additional_llm_context": ""
     }, 
@@ -20,7 +20,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Mercury",
         "column_widths": [1, 2, 1],
-        "image": "images/mercury.png"
+        "image": "images/mercury.png",
         "information": "fill me in",
         "additional_llm_context": ""
     }, 
@@ -28,7 +28,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Venus",
         "column_widths": [1, 2, 1],
-        "image": "images/venus.png"
+        "image": "images/venus.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
@@ -36,7 +36,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Earth",
         "column_widths": [1, 2, 1],
-        "image": "images/earth.png"
+        "image": "images/earth.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
@@ -44,7 +44,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Mars",
         "column_widths": [1, 2, 1],
-        "image": "images/mars.png"
+        "image": "images/mars.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
@@ -52,7 +52,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Jupiter",
         "column_widths": [1, 2, 1],
-        "image": "images/jupiter.png"
+        "image": "images/jupiter.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
@@ -60,7 +60,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Saturn",
         "column_widths": [1, 2, 1],
-        "image": "images/saturn.png"
+        "image": "images/saturn.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
@@ -68,7 +68,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Uranus",
         "column_widths": [1, 2, 1],
-        "image": "images/uranus.png"
+        "image": "images/uranus.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
@@ -76,7 +76,7 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Neptune",
         "column_widths": [1, 2, 1],
-        "image": "images/neptune.png"
+        "image": "images/neptune.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
@@ -84,8 +84,11 @@ content = {
         "background_img": "images/solar_system_background.jpeg",
         "header": "Pluto",
         "column_widths": [1, 2, 1],
-        "image": "images/pluto.png"
+        "image": "images/pluto.png",
         "information": "fill me in",
         "additional_llm_context": ""
     },
 }
+sorted_page_nums = sorted(content.keys())
+first_page_num = sorted_page_nums[0]
+last_page_num = sorted_page_nums[-1]
