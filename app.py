@@ -40,11 +40,12 @@ def chatgpt(prompt: str, context: str = "You are a helpful assistant.", model: s
     return response.choices[0].message.content
 
 # customized assistant
-def custom_assistant(prompt: str) -> str:
+def custom_assistant(prompt: str, general_instructions: str, page_context: str) -> str:
     """
     Custom logic for our assistant
     """
-    return "Not programmed yet"
+    context = f"{general_instructions}\n{page_context}"
+    return chatgpt(prompt, context)
 
 # set background image
 import base64
