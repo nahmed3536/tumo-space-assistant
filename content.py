@@ -37,7 +37,7 @@ content = {
         "header": "Venus",
         "column_widths": [2, 3, 2],
         "image": "images/venus.png",
-        "information": "Venus is the second planet from the sun and is similar in size to Earth, often referred to as Earth's "sister planet." It is characterized by a thick, toxic atmosphere composed mainly of carbon dioxide, causing a runaway greenhouse effect and making it the hottest planet in our solar system.",
+        "information": "Venus is the second planet from the sun and is similar in size to Earth, often referred to as Earth's 'sister planet.' It is characterized by a thick, toxic atmosphere composed mainly of carbon dioxide, causing a runaway greenhouse effect and making it the hottest planet in our solar system.",
         "additional_llm_context": "Answer all questions with a focus on Venus",
     },
     3: {
@@ -53,7 +53,7 @@ content = {
         "header": "Mars",
         "column_widths": [2, 3, 2],
         "image": "images/mars.png",
-        "information": "Mars, the fourth planet from the sun, is often called the "Red Planet" due to its rusty appearance. It features a diverse landscape, including expansive deserts, polar ice caps, and evidence of ancient riverbeds, sparking interest in the possibility of past or present Martian life.",
+        "information": "Mars, the fourth planet from the sun, is often called the 'Red Planet' due to its rusty appearance. It features a diverse landscape, including expansive deserts, polar ice caps, and evidence of ancient riverbeds, sparking interest in the possibility of past or present Martian life.",
         "additional_llm_context": "Answer all questions with a focus on Mars",
     },
     5: {
