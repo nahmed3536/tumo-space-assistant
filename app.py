@@ -11,6 +11,10 @@ import streamlit as st
 # set the page / tab title
 st.set_page_config(page_title="NebulaGPT")
 
+# access toml configuration
+import toml
+config = toml.load(".streamlit/config.toml")
+
 # set background image
 import base64
 
@@ -31,12 +35,13 @@ def set_background(png_file):
     ''' % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-# read in custom CSS file
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# load in custom CSS 
+import style
 
-local_css("style.css")
+def local_css(css):
+    st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+
+local_css(style.css)
 
 # web-app elements
 font_family = ""

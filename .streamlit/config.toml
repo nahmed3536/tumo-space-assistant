@@ -1,6 +1,20 @@
 [theme]
-primaryColor="#ba1e68"
+primaryColor="#bA1E68"
 backgroundColor="#141317"
 secondaryBackgroundColor="#FFFFFF"
 textColor="#000000"
-font="helvetica"
+font="monospace"
+
+[buttons]
+primaryBackgroundColor="#002A3A"
+primaryBorder="2px solid white"
+primaryColor="#FFFFFF"
+primaryHoverBackgroundColor="#27768D"
+primaryHoverBorder="2px solid white"
+primaryHoverColor="#000000"
+secondaryBackgroundColor="#EF5270"
+secondaryBorder="2px solid white"
+secondaryColor="#FFFFFF"
+secondaryHoverBackgroundColor="#D48D99"
+secondaryHoverBorder="2px solid white"
+secondaryHoverColor="#000000"
