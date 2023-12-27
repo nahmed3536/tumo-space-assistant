@@ -15,6 +15,30 @@ st.set_page_config(page_title="NebulaGPT")
 import toml
 config = toml.load(".streamlit/config.toml")
 
+# set up chatgpt API
+import os
+import openai
+
+openai_client = openai.OpenAI(
+    api_key=os.environ['OPENAI_API_KEY'],
+)
+
+def assistant(prompt: str, context: str = "You are a helpful assistant.", model: str = "gpt-3.5-turbo") -> str:
+    response = openai_client.chat.completions.create(
+        messages=[
+            {
+                "role": "system",
+                "content": context,
+            },
+             {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
+        model=model,
+    )
+    return response.choices[0].message.content
+
 # set background image
 import base64
 
@@ -72,10 +96,10 @@ def spacer(height: int = 50):
     )
 
 def center_head(text: str):
-    st.markdown(f"<h1 style='text-align: center; font-family: {config['theme']['font']}; color: {config['theme']['textColor']};'>{text}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center; font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']};'>{text}</h1>", unsafe_allow_html=True)
 
 def text(text: str):
-    st.markdown(f"<p style='font-family: {config['theme']['font']}; color: {config['theme']['textColor']};'>{text}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']};'>{text}</h1>", unsafe_allow_html=True)
 
 # pages functionality 
 if 'page' not in st.session_state: st.session_state.page = -1
@@ -91,8 +115,8 @@ if st.session_state.page == -1:
     with page.container():
         set_background("images/homepage_background.jpeg")
         center_head("Welcome to NebulaGPT")
-        st.markdown(f"<h4 style='font-family: {config['theme']['font']}; color: {config['theme']['textColor']}; font-weight: bold; text-stroke: 1px black;'>Your AI assistant to explore the Solar System and Space!</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h4 style='font-family: {config['theme']['font']}; color: {config['theme']['textColor']}; font-weight: bold;'>Begin your journey at Earth!</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']}; font-weight: bold; text-stroke: 1px black;'>Your AI assistant to explore the Solar System and Space!</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='font-family: {config['markdown']['font']}; color: {config['markdown']['textColor']}; font-weight: bold;'>Begin your journey at Earth!</h4>", unsafe_allow_html=True)
         spacer()
 
         # button to navigate to Earth
@@ -141,7 +165,7 @@ if st.session_state.page == 3:
         def get_response(prompt):
             # Replace this with your logic to generate a response based on the input prompt
             # For now, let's just echo the prompt as a response
-            return f":green[You said: {prompt}]"
+            return assistant(prompt)
         
 
         user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")

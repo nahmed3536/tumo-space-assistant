@@ -1,4 +1,4 @@
-[theme]
+[theme] # streamlit theme
 primaryColor="#bA1E68"
 backgroundColor="#141317"
 secondaryBackgroundColor="#FFFFFF"
@@ -18,3 +18,7 @@ secondaryColor="#FFFFFF"
 secondaryHoverBackgroundColor="#D48D99"
 secondaryHoverBorder="2px solid white"
 secondaryHoverColor="#000000"
+
+[markdown] # custom markdown theme
+textColor="#FFFFFF" 
+font="monospace"
