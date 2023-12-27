@@ -39,6 +39,9 @@ def local_css(file_name):
 local_css("style.css")
 
 # web-app elements
+font_family = ""
+
+
 def navigationButtons():
     # navigation buttons
     col1, col2, col3, col4, col5 = st.columns(5)
@@ -67,10 +70,10 @@ def spacer(height: int = 50):
     )
 
 def center_head(text: str):
-    st.markdown(f"<h1 style='text-align: center; font-family: Helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center; font-family: helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
 
 def text(text: str):
-    st.markdown(f"<p style='font-family: Helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='font-family: helvetica; color: white;'>{text}</h1>", unsafe_allow_html=True)
 
 # pages functionality 
 if 'page' not in st.session_state: st.session_state.page = -1
@@ -116,27 +119,48 @@ if st.session_state.page == 3:
     with page.container():
         set_background("images/solar_system_background.jpeg")
         center_head("Earth")
-
-        
-
-        # image URL
-        # image_url = "images/earth.png"
-
-
-        # image = Image.open("images/earth.png")
-
-        # # Convert the image to a base64-encoded string
-        # image_base64 = base64.b64encode(io.BytesIO(image.convert("RGBA").png).read()).decode()
-
-        # # Markdown to insert the base64-encoded image
-        # st.markdown(f"![Image](data:image/png;base64,{image_base64})", unsafe_allow_html=True)
-                
-        # # # Apply the custom code
-        # # st.markdown(custom_image_code, unsafe_allow_html=True)
-        # # st.image(image_url, caption="Centered Image", use_column_width=auto)
-
         with st.columns([1, 2, 1])[1]:
             st.image("images/earth.png", use_column_width = True)
+        
+        # Define the background color and text color
+        background_color = "#141317"
+        text_color = "#ffffff"
+
+        # Define the content for the text box
+        text_box_content = f"""
+            <div style="background-color: {background_color}; padding: 10px; border-radius: 10px;">
+                <h6 style="color: {text_color};">Information about Earth</h6>
+            </div>
+        """
+
+        # Display the text box using markdown
+        st.markdown(text_box_content, unsafe_allow_html=True)
+
+        def get_response(prompt):
+            # Replace this with your logic to generate a response based on the input prompt
+            # For now, let's just echo the prompt as a response
+            return f":green[You said: {prompt}]"
+        
+
+        user_input = st.text_input(" ", placeholder="Have more questions? Ask it here!", label_visibility="hidden", key="user_input")
+
+        # Check if the user pressed Enter (carriage return)
+        if user_input and st.session_state.prev_input != user_input:
+            # Get response based on user input
+            response = get_response(user_input)
+
+            # Display the response
+            text_box_content = f"""
+            <div style="background-color: #FFFFFF; padding: 10px; border-radius: 10px;">
+                <h2 style="color: #000000;">{response}</h2>
+                <p style="color: #000000;">This is a sample text box with a background color.</p>
+            </div>
+            """
+            st.markdown(text_box_content, unsafe_allow_html=True)
+
+        # Update the previous input
+        st.session_state.prev_input = user_input
+
         spacer()
         navigationButtons()
 

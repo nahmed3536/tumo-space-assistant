@@ -2,26 +2,26 @@ button[kind="primary"] {
   background-color: #002A3A;
   border: 2px solid white;
   color: white;
-  font-family: Helvetica;
+  font-family: helvetica;
 }
 
 button[kind="primary"]:hover {
   background-color: #27768D;
   border: 2px solid white;
   color: black;
-  font-family: Helvetica;
+  font-family: helvetica;
 }
 
 button[kind="secondary"] {
   background-color: #EF5270;
   border: 2px solid white;
   color: white;
-  font-family: Helvetica;
+  font-family: helvetica;
 }
 
 button[kind="secondary"]:hover {
   background-color: #D48D99;
   border: 2px solid white;
   color: black;
-  font-family: Helvetica;
+  font-family: helvetica;
 }
